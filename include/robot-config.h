@@ -10,6 +10,9 @@ extern motor RightMotorA;
 extern motor RightMotorB;
 extern motor RightMotorC;
 extern controller Controller1;
+extern rotation RightRotation;
+extern rotation LeftRotation;
+extern inertial Inertial11;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

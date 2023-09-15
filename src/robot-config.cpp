@@ -15,6 +15,9 @@ motor RightMotorA = motor(PORT6, ratio18_1, false);
 motor RightMotorB = motor(PORT7, ratio18_1, true);
 motor RightMotorC = motor(PORT8, ratio18_1, false);
 controller Controller1 = controller(primary);
+rotation RightRotation = rotation(PORT14, false);
+rotation LeftRotation = rotation(PORT13, true);
+inertial Inertial11 = inertial(PORT11);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
