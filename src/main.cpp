@@ -64,6 +64,34 @@
 // RightMotorB          motor         7               
 // RightMotorC          motor         8               
 // Controller1          controller                    
+// RightRotation        rotation      14              
+// LeftRotation         rotation      13              
+// Inertial11           inertial      11              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LeftMotorA           motor         1               
+// LeftMotorB           motor         2               
+// LeftMotorC           motor         3               
+// RightMotorA          motor         6               
+// RightMotorB          motor         7               
+// RightMotorC          motor         8               
+// Controller1          controller                    
+// RightRotation        rotation      14              
+// LeftRotation         rotation      13              
+// Inertial11           inertial      11              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LeftMotorA           motor         1               
+// LeftMotorB           motor         2               
+// LeftMotorC           motor         3               
+// RightMotorA          motor         6               
+// RightMotorB          motor         7               
+// RightMotorC          motor         8               
+// Controller1          controller                    
 // Rotation14           rotation      14              
 // LeftRotation         rotation      13              
 // Inertial11           inertial      11              
@@ -179,12 +207,9 @@ int main() {
     //turn *= 100;
     drive(Controller1.Axis3.value(), turn);
     wait(10, msec);
-    //odo.printLocation();
+    odo.printLocation();
     odo.updateOdometry();
 
-    wait(1, sec);
-    cout << "x: " << odo.getX() << "\n";
-    cout << "y: " << odo.getX() << "\n";
   }
   
 }

@@ -81,7 +81,7 @@ void Odometry::updateOdometry() {
 
   double diffLeft = newEncoderLeft - encoderLeft;
   double diffRight = newEncoderRight - encoderRight;
-  double diffCenter = newEncoderCenter - encoderCenter;
+  double diffCenter = 0;
 
   // overwrite old values
   encoderLeft = newEncoderLeft;
