@@ -12,13 +12,16 @@ Odometry::Odometry() {
 }
 
 void Odometry::reset() {
-  locationX = 86.0;
-  locationY = 8.0;
+  locationX = 0.0;
+  locationY = 0.0;
   locationTheta = M_PI / 2;
 
   encoderLeft = 0.0;
   encoderRight = 0.0;
   encoderCenter = 0.0;
+
+  motorLeft = 0.0;
+  motorRight = 0.0;
 
   LeftRotation.resetPosition();
   RightRotation.resetPosition();
@@ -42,32 +45,40 @@ vector<double> Odometry::getLocation() {
 }
 
 void Odometry::printLocation() {
-  Brain.Screen.clearScreen(); 
+  // ==== Brain Printout ===
+  // Brain.Screen.clearScreen(); 
   
-  Brain.Screen.setCursor(1, 1);
-  Brain.Screen.print("X: %f", locationX);
+  // Brain.Screen.setCursor(1, 1);
+  // Brain.Screen.print("X: %f", locationX);
 
-  // Display the Y position on row 2
-  Brain.Screen.newLine();
-  Brain.Screen.print("Y: %f", locationY);
+  // // Display the Y position on row 2
+  // Brain.Screen.newLine();
+  // Brain.Screen.print("Y: %f", locationY);
 
-  // Display the Z position on row 3
-  Brain.Screen.newLine();
-  Brain.Screen.print("Theta: %f", locationTheta);
+  // // Display the Z position on row 3
+  // Brain.Screen.newLine();
+  // Brain.Screen.print("Theta: %f", locationTheta);
 
   Controller1.Screen.setCursor(0,0);
   Controller1.Screen.clearScreen();
   
   Controller1.Screen.setCursor(1, 1);
-  Controller1.Screen.print("X: %f", locationX);
+  Controller1.Screen.print("X: %.2f ", locationX);
 
   // Display the Y position on row 2
-  Controller1.Screen.newLine();
-  Controller1.Screen.print("Y: %f", locationY);
+  // Controller1.Screen.newLine();
+  Controller1.Screen.print("Y: %.2f ", locationY);
 
   // Display the Z position on row 3
+  // Controller1.Screen.newLine();
+  Controller1.Screen.print("T: %.2f", locationTheta);
+
   Controller1.Screen.newLine();
-  Controller1.Screen.print("Theta: %f", locationTheta);
+  Controller1.Screen.print("EL: %.3f", encoderLeft);
+  Controller1.Screen.print("ER: %.3f", encoderRight);
+  Controller1.Screen.newLine();
+  Controller1.Screen.print("ML: %.3f", motorLeft);
+  Controller1.Screen.print("MR: %.3f", motorRight);
 }
 
 void Odometry::updateOdometry() {
@@ -86,6 +97,8 @@ void Odometry::updateOdometry() {
   // overwrite old values
   encoderLeft = newEncoderLeft;
   encoderRight = newEncoderRight;
+  motorLeft = LeftMotorA.position(turns);
+  motorRight = RightMotorA.position(turns);
   // encoderCenter = newEncoderCenter;
 
   // 2. calculate delta u
@@ -100,4 +113,10 @@ void Odometry::updateOdometry() {
   locationX += dx * cos(newTheta) - dy * sin(newTheta);
   locationY += dx * sin(newTheta) + dy * cos(newTheta);
   locationTheta += dt;
+  if (locationTheta > 2 * M_PI) {
+    locationTheta -= 2 * M_PI;
+  }
+  else if (locationTheta < 0) {
+    locationTheta += 2 * M_PI;
+  }
 }
