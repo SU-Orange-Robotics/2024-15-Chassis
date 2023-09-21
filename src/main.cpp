@@ -177,21 +177,32 @@
 using namespace vex;
 using namespace std;
 
-void leftDrive(double y, double x) {
-  LeftMotorA.spin(directionType::fwd, y + x/2, velocityUnits::pct);
-  LeftMotorB.spin(directionType::fwd, y + x/2, velocityUnits::pct);
-  LeftMotorC.spin(directionType::fwd, y + x/2, velocityUnits::pct);
+void leftDrive(double pow) {
+  LeftMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
+  LeftMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
+  LeftMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
-void rightDrive(double y, double x) {
-  RightMotorA.spin(directionType::fwd, y - x/2, velocityUnits::pct);
-  RightMotorB.spin(directionType::fwd, y - x/2, velocityUnits::pct);
-  RightMotorC.spin(directionType::fwd, y - x/2, velocityUnits::pct);
+void rightDrive(double pow) {
+  RightMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
+  RightMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
+  RightMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
-void drive(double y, double x) {
-  leftDrive(y, x);
-  rightDrive(y, x);
+void arcadeDrive(double y, double x) {
+  x /= 2;
+  leftDrive(y + x);
+  rightDrive(y - x);
+}
+
+void tankDrive(double left, double right) {
+  if (abs(left - right) <= 4) { // if the stick inputs are close together, it sends the same value to both sides
+    left = (left + right) / 2;
+    right = left;
+  }
+
+  leftDrive(left);
+  rightDrive(right);
 }
 
 int main() {
@@ -207,11 +218,14 @@ int main() {
     //turn /= 100;
     //turn *= abs(turn);
     //turn *= 100;
-    drive(Controller1.Axis3.value(), turn);
+    arcadeDrive(Controller1.Axis3.value(), turn);
+    //tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
+
     odo.updateOdometry();
     
     if(++printCounter % 100 == 0) {
       odo.printLocation();
+      //Controller1.Screen.clearScreen(); Controller1.Screen.print("LJoyX: %f", turn);
       printCounter = 0;
     }
     
