@@ -1,153 +1,3 @@
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// RightRotation        rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// Rotation14           rotation      14              
-// LeftRotation         rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// Rotation14           rotation      14              
-// Rotation13           rotation      13              
-// Inertial11           inertial      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// Rotation14           rotation      14              
-// Rotation13           rotation      13              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// Rotation11           rotation      11              
-// Rotation13           rotation      13              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftMotorA           motor         1               
-// LeftMotorB           motor         2               
-// LeftMotorC           motor         3               
-// RightMotorA          motor         6               
-// RightMotorB          motor         7               
-// RightMotorC          motor         8               
-// Controller1          controller                    
-// Rotation11           rotation      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -196,7 +46,7 @@ void arcadeDrive(double y, double x) {
 }
 
 void tankDrive(double left, double right) {
-  if (abs(left - right) <= 4) { // if the stick inputs are close together, it sends the same value to both sides
+  if (abs(left - right) <= 20) { // if the stick inputs are close together, it sends the same value to both sides
     left = (left + right) / 2;
     right = left;
   }
@@ -218,8 +68,8 @@ int main() {
     //turn /= 100;
     //turn *= abs(turn);
     //turn *= 100;
-    arcadeDrive(Controller1.Axis3.value(), turn);
-    //tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
+    //arcadeDrive(Controller1.Axis3.value(), turn);
+    tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
 
     odo.updateOdometry();
     
