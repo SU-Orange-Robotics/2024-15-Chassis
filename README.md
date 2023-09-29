@@ -1,5 +1,5 @@
 # 2024-15-Chassis
 
-## this is a readme
+This is the code for the smaller of our two Over Under robots
 
-this is some more text
+*description of robot mechanisms should go here*
