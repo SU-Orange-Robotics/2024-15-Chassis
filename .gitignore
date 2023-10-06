@@ -2,7 +2,6 @@
 build/
 
 # VSCode Configurations
-.vscode/
 *code-workspace
 
 # Prerequisites
