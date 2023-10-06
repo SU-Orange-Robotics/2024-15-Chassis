@@ -1,6 +1,9 @@
 # Others
 build/
 
+# VSCode Configurations
+*code-workspace
+
 # Prerequisites
 *.d
 
@@ -33,3 +36,6 @@ build/
 *.exe
 *.out
 *.app
+
+# hidden metadata
+.DS_Store
