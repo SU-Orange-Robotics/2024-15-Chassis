@@ -23,6 +23,7 @@
 #include <cmath>
 #include "odometry.h"
 #include <iostream>
+#include "gps.h"
 
 using namespace vex;
 using namespace std;
