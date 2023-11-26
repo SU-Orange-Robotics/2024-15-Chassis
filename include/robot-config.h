@@ -14,6 +14,8 @@ extern rotation RightRotation;
 extern rotation LeftRotation;
 extern inertial Inertial11;
 
+extern gps GPS;
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  * 

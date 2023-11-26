@@ -1,4 +1,3 @@
-#include "vex.h"
 #include "gps.h"
 #include "iostream"
 
