@@ -7,13 +7,11 @@ class Gps {
     private:
         double xPosition;
         double yPosition;
-        double angle;
+        double heading;
 
     public:
         Gps();
-
-        void getLocation();
-
+        void updateLocation();
         void printLocation();
 };
 

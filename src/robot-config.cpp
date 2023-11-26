@@ -19,6 +19,8 @@ rotation RightRotation = rotation(PORT14, true);
 rotation LeftRotation = rotation(PORT13, false);
 inertial Inertial11 = inertial(PORT11);
 
+gps GpsSensor = gps(PORT20);
+
 // VEXcode generated functions
 // define variable for remote controller enable/disable
 bool RemoteControlCodeEnabled = true;

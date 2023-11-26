@@ -1,21 +1,16 @@
 #include "gps.h"
-#include "iostream"
 
 using namespace vex;
 using namespace std;
 
 // constructor, not tested
-Gps::Gps(){
-    gps(20);
-    printf("Works");
-}
+Gps::Gps() : xPosition(0.0), yPosition(0.0), heading(0.0) {}
 
 // not tested, weird implementation of vex::gps probably
-void Gps::getLocation() {
-    gps gpsTest(20);
-    xPosition = gpsTest.xPosition();
-    yPosition = gpsTest.yPosition();
-    angle = gpsTest.heading();
+void Gps::updateLocation() {
+    xPosition = GpsSensor.xPosition();
+    yPosition = GpsSensor.yPosition();
+    heading = GpsSensor.heading();
 }
 
 // work in progress
@@ -24,7 +19,11 @@ void Gps::printLocation(){
 
     // maybe merge code with getLocation() and have it take a boolean value if you 
     // want it to print to the screen?
-    Controller1.Screen.print(Gps::xPosition);
+    Controller1.Screen.print("GPS_X: %.2f ", xPosition);
+    Controller1.Screen.newLine();
+    Controller1.Screen.print("GPS_Y: %.2f ", yPosition);
+    Controller1.Screen.newLine();
+    Controller1.Screen.print("GPS_Heading: %.2f ", heading);
 }
 
 

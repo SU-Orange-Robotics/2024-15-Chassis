@@ -19,10 +19,11 @@
 // Controller1          controller                    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
-#include "vex.h"
 #include <cmath>
-#include "odometry.h"
 #include <iostream>
+
+#include "vex.h"
+#include "odometry.h"
 #include "gps.h"
 
 using namespace vex;
