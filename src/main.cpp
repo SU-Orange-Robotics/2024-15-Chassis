@@ -30,13 +30,11 @@ using namespace std;
 void leftDrive(double pow) {
   LeftMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
   LeftMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
-  LeftMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
 void rightDrive(double pow) {
   RightMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
   RightMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
-  RightMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
 void arcadeDrive(double y, double x) {

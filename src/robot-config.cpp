@@ -10,14 +10,15 @@ brain  Brain;
 // VEXcode device constructors
 motor LeftMotorA = motor(PORT1, ratio18_1, true);
 motor LeftMotorB = motor(PORT2, ratio18_1, false);
-motor LeftMotorC = motor(PORT3, ratio18_1, true);
 motor RightMotorA = motor(PORT6, ratio18_1, false);
 motor RightMotorB = motor(PORT7, ratio18_1, true);
-motor RightMotorC = motor(PORT8, ratio18_1, false);
+
 controller Controller1 = controller(primary);
 rotation RightRotation = rotation(PORT14, true);
 rotation LeftRotation = rotation(PORT13, false);
 inertial Inertial11 = inertial(PORT11);
+
+gps GPS = gps(PORT20);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
