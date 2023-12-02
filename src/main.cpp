@@ -44,13 +44,17 @@ void arcadeDrive(double y, double x) {
 }
 
 void tankDrive(double left, double right) {
+
+  left /= 2;
+  right /= 2;
+
   if (abs(left - right) <= 20) { // if the stick inputs are close together, it sends the same value to both sides
     left = (left + right) / 2;
     right = left;
   }
 
-  leftDrive(left);
-  rightDrive(right);
+  leftDrive(-left);
+  rightDrive(-right);
 }
 
 int main() {
@@ -69,13 +73,8 @@ int main() {
     //arcadeDrive(Controller1.Axis3.value(), turn);
     tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
 
-    odo.updateOdometry();
+    // odo.updateOdometry();
     
-    if(++printCounter % 100 == 0) {
-      odo.printLocation();
-      //Controller1.Screen.clearScreen(); Controller1.Screen.print("LJoyX: %f", turn);
-      printCounter = 0;
-    }
     
     wait(10, msec);
   }

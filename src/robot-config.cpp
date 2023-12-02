@@ -8,17 +8,22 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor LeftMotorA = motor(PORT1, ratio18_1, true);
-motor LeftMotorB = motor(PORT2, ratio18_1, false);
-motor RightMotorA = motor(PORT6, ratio18_1, false);
-motor RightMotorB = motor(PORT7, ratio18_1, true);
+motor LeftMotorA = motor(PORT15, ratio18_1, true);
+motor LeftMotorB = motor(PORT16, ratio18_1, false);
+motor RightMotorA = motor(PORT11, ratio18_1, false);
+motor RightMotorB = motor(PORT12, ratio18_1, true);
 
 controller Controller1 = controller(primary);
 rotation RightRotation = rotation(PORT14, true);
 rotation LeftRotation = rotation(PORT13, false);
 inertial Inertial11 = inertial(PORT11);
 
-gps GPS = gps(PORT20);
+
+motor WingMotorLeft = motor(PORT8, ratio18_1, true);
+motor WingMotorRight = motor(PORT20, ratio18_1, true);
+
+
+gps GPS = gps(PORT9);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
