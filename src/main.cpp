@@ -24,12 +24,14 @@
 #include "odometry.h"
 #include <iostream>
 #include "gps.h"
+#include "drive.h"
 
 using namespace vex;
 using namespace std;
 
 // A global instance of competition
 competition Competition;
+Drive drive = Drive();
 
 // define your global instances of motors and other devices here
 
@@ -56,21 +58,6 @@ void arcadeDrive(double y, double x) {
   rightDrive(y - x);
 }
 
-void tankDrive(double left, double right) {
-
-  if (abs(left) == 0 && abs(right) == 0) {
-    stop();
-    return;
-  }
-
-  if (abs(left - right) <= 20) { // if the stick inputs are close together, it sends the same value to both sides
-    left = (left + right) / 2;
-    right = left;
-  }
-
-  leftDrive(-left);
-  rightDrive(-right);
-}
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -115,22 +102,25 @@ void autonomous(void) {
 /*---------------------------------------------------------------------------*/
 
 void usercontrol(void) {
-  float reverseFlag = false;
+
+  Controller1.ButtonL1.pressed([]() {
+    drive.toggleInvertedDrive();
+  });
+
   while(1) {
+    // if (Controller1.ButtonL1.pressing()) {
+    //   drive.toggleInvertedDrive();
+    // }
     float turn = Controller1.Axis4.value();
     //turn /= 100;
     //turn *= abs(turn);
     //turn *= 100;
     //arcadeDrive(Controller1.Axis3.value(), turn);
-    reverseFlag = Controller1.ButtonL1.pressing();
     
-    if (reverseFlag){
-      tankDrive(-Controller1.Axis2.value(), -Controller1.Axis3.value());
-    }
-    else{
-      tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
-    }
-
+    drive.tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
+    Controller1.Screen.clearScreen();
+    Controller1.Screen.setCursor(1, 1);
+    Controller1.Screen.print(drive.getToggleStatus());
 
     WingMotorLeft.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
     WingMotorRight.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
@@ -143,16 +133,14 @@ void usercontrol(void) {
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
+  Competition.autonomous(autonomous);
+  Competition.drivercontrol(usercontrol);
+
   vexcodeInit();
   Odometry();
   Odometry odo;
-  // pre_auton();
-  // Competition.autonomous(autonomous);
-  // Competition.drivercontrol(usercontrol);
 
   Controller1.Screen.print("hello");
 
   int printCounter = 0;
-
-  usercontrol(); // enter usercontrol loop
   }

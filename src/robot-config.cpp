@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "robot-config.h"
 
 using namespace vex;
 using signature = vision::signature;
@@ -21,7 +22,6 @@ inertial Inertial11 = inertial(PORT11);
 
 motor WingMotorLeft = motor(PORT8, ratio18_1, true);
 motor WingMotorRight = motor(PORT20, ratio18_1, false);
-
 
 gps GPS = gps(PORT9);
 
