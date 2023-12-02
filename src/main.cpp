@@ -84,11 +84,57 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
+void test() {
+ 
+}
 
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
+
+  // drive forwards for 1 second 
+  
+
+  // drive.driveForwardWithSpeed(-50);
+  // wait(1000, msec);
+
+  // drive.slowTurnRight();
+  // wait(100, msec);
+  // drive.stop();
+
+  // drive.driveForwardWithSpeed(-50);
+  // wait(1000, msec);
+
+  // drive.stop();
+  
+   int startCounter = 0;
+  int counter = 0;
+
+  // while (true) {
+  //   counter++;
+  drive.driveForwardWithSpeed(90);
+  wait(600, msec);
+
+  drive.driveForwardWithSpeed(-30);
+  wait(1100, msec);
+  drive.stop();
+
+  drive.slowTurnRight();
+  wait(570, msec);
+  drive.stop();
+
+  drive.driveForwardWithSpeed(-30);
+  wait(5000, msec);
+  drive.stop();
+
+  drive.slowTurnRight();
+  wait(580, msec);
+  drive.stop();
+
+  drive.driveForwardWithSpeed(-30);
+  wait(5000, msec);
+  drive.stop();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -108,14 +154,7 @@ void usercontrol(void) {
   });
 
   while(1) {
-    // if (Controller1.ButtonL1.pressing()) {
-    //   drive.toggleInvertedDrive();
-    // }
     float turn = Controller1.Axis4.value();
-    //turn /= 100;
-    //turn *= abs(turn);
-    //turn *= 100;
-    //arcadeDrive(Controller1.Axis3.value(), turn);
     
     drive.tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
     Controller1.Screen.clearScreen();
@@ -124,8 +163,6 @@ void usercontrol(void) {
 
     WingMotorLeft.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
     WingMotorRight.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
-
-    // odo.updateOdometry();
     
     wait(10, msec);
   }
@@ -137,10 +174,6 @@ int main() {
   Competition.drivercontrol(usercontrol);
 
   vexcodeInit();
-  Odometry();
-  Odometry odo;
-
-  Controller1.Screen.print("hello");
-
-  int printCounter = 0;
-  }
+  // Odometry();
+  // Odometry odo;
+}

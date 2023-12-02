@@ -19,4 +19,14 @@ public:
   void stop();
   void leftDrive(double pow);
   void rightDrive(double pow);
+
+  // autonomous code 
+  void driveForwardForTime(double time);
+  void driveForwardWithSpeed(double speed);
+
+  void driveBackwardForTime(double time);
+
+  void slowTurnRight();
+  void slowTurnLeft();
+
 };

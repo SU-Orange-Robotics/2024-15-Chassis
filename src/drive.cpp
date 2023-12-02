@@ -3,11 +3,6 @@
 
 void Drive::toggleInvertedDrive() {
   invertedDrive = !invertedDrive;
-  // if (invertedDrive == true) {
-  //   invertedDrive = false;
-  // } else {
-  //   invertedDrive = true;
-  // }
 }
 
 Drive::Drive() {
@@ -61,4 +56,32 @@ bool Drive::getToggleStatus() {
 }
 
 
-//
+// ===== for autonomous =====
+void Drive::driveForwardForTime(double time) {
+  leftDrive(-80);
+  rightDrive(-80);
+
+  this_thread::sleep_for(1000);
+}
+
+void Drive::driveBackwardForTime(double time) {
+  leftDrive(80);
+  rightDrive(80);
+
+  this_thread::sleep_for(1000);
+}
+
+void Drive::slowTurnRight(){
+  leftDrive(-20);
+  rightDrive(20);
+}
+
+void Drive::slowTurnLeft(){
+  leftDrive(20);
+  rightDrive(-20);
+}
+
+void Drive::driveForwardWithSpeed(double speed) {
+  leftDrive(-speed);
+  rightDrive(-speed);
+}
