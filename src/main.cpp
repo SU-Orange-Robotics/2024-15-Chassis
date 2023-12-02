@@ -28,16 +28,21 @@
 using namespace vex;
 using namespace std;
 
+void stop() {
+  LeftMotorA.stop(brake);
+  LeftMotorB.stop(brake);
+  RightMotorA.stop(brake);
+  RightMotorB.stop(brake);
+}
+
 void leftDrive(double pow) {
   LeftMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
   LeftMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
-  LeftMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
 void rightDrive(double pow) {
   RightMotorA.spin(directionType::fwd, pow, velocityUnits::pct);
   RightMotorB.spin(directionType::fwd, pow, velocityUnits::pct);
-  RightMotorC.spin(directionType::fwd, pow, velocityUnits::pct);
 }
 
 void arcadeDrive(double y, double x) {
@@ -47,13 +52,19 @@ void arcadeDrive(double y, double x) {
 }
 
 void tankDrive(double left, double right) {
+
+  if (abs(left) == 0 && abs(right) == 0) {
+    stop();
+    return;
+  }
+
   if (abs(left - right) <= 20) { // if the stick inputs are close together, it sends the same value to both sides
     left = (left + right) / 2;
     right = left;
   }
 
-  leftDrive(left);
-  rightDrive(right);
+  leftDrive(-left);
+  rightDrive(-right);
 }
 
 int main() {
@@ -64,6 +75,7 @@ int main() {
 
   int printCounter = 0;
 
+
   while(true) {
     float turn = Controller1.Axis4.value();
     //turn /= 100;
@@ -72,13 +84,13 @@ int main() {
     //arcadeDrive(Controller1.Axis3.value(), turn);
     tankDrive(Controller1.Axis3.value(), Controller1.Axis2.value());
 
-    odo.updateOdometry();
+    WingMotorLeft.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
+    WingMotorRight.spin(directionType::fwd, Controller1.ButtonA.pressing() ? -50 : 0, velocityUnits::pct);
+
+
+
+    // odo.updateOdometry();
     
-    if(++printCounter % 100 == 0) {
-      odo.printLocation();
-      //Controller1.Screen.clearScreen(); Controller1.Screen.print("LJoyX: %f", turn);
-      printCounter = 0;
-    }
     
     wait(10, msec);
   }
