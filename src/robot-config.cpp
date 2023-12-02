@@ -10,8 +10,8 @@ brain  Brain;
 // VEXcode device constructors
 motor LeftMotorA = motor(PORT15, ratio18_1, true);
 motor LeftMotorB = motor(PORT16, ratio18_1, false);
-motor RightMotorA = motor(PORT11, ratio18_1, false);
-motor RightMotorB = motor(PORT12, ratio18_1, true);
+motor RightMotorA = motor(PORT11, ratio18_1, true);
+motor RightMotorB = motor(PORT12, ratio18_1, false);
 
 controller Controller1 = controller(primary);
 rotation RightRotation = rotation(PORT14, true);
@@ -20,7 +20,7 @@ inertial Inertial11 = inertial(PORT11);
 
 
 motor WingMotorLeft = motor(PORT8, ratio18_1, true);
-motor WingMotorRight = motor(PORT20, ratio18_1, true);
+motor WingMotorRight = motor(PORT20, ratio18_1, false);
 
 
 gps GPS = gps(PORT9);

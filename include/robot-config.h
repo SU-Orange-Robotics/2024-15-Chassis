@@ -14,6 +14,9 @@ extern rotation RightRotation;
 extern rotation LeftRotation;
 extern inertial Inertial11;
 
+extern motor WingMotorLeft;
+extern motor WingMotorRight;
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  * 
